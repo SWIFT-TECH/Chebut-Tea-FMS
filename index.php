@@ -11,7 +11,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Title -->
-    <title>Chebut Tea FMS </title>
+    <title>Chebut Tea FMS - AdminLTE</title>
     <div style="text-align: right;">
     <a href="/chebut/admin">Admin Portal</a>
     </div>
