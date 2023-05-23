@@ -1,55 +1,57 @@
 <?php
 	include 'includes/session.php';
 
-	function generateRow($conn){
-		$contents = '';
-		
-		$sql = "SELECT *, farmers.id AS empid FROM farmers LEFT JOIN collection_centre ON collection_centre.id=farmers.schedule_id";
+	function generateRow($conn) {
+        $contents = '';
+        
+        $sql = "SELECT farmers.lastname, farmers.firstname, farmers.employee_id, farmers.centre
+        FROM farmers" ;
 
-		$query = $conn->query($sql);
-		$total = 0;
-		while($row = $query->fetch_assoc()){
-			$contents .= "
-			<tr>
-				<td>".$row['lastname'].", ".$row['firstname']."</td>
-				<td>".$row['employee_id']."</td>
-				<td>".date('h:i A', strtotime($row['time_in'])).' - '. date('h:i A', strtotime($row['time_out']))."</td>
-			</tr>
-			";
-		}
+        $query = $conn->query($sql);
+        $total = 0;
+        while ($row = $query->fetch_assoc()) {
+            $contents .= "
+            <tr>
+                <td>".$row['lastname'].", ".$row['firstname']."</td>
+                <td>".$row['employee_id']."</td>
+                <td>".$row['centre']."</td>
+            </tr>
+            ";
+        }
+    
+        return $contents;
+    }
+    
+	// Adjust the path to autoload.php based on the location of payroll_generate.php
+    require_once __DIR__ . '/../vendor/autoload.php';
 
-		return $contents;
-	}
+    // Create a new instance of Dompdf
+    $dompdf = new \Dompdf\Dompdf();
 
-	require_once('../tcpdf/tcpdf.php');  
-    $pdf = new TCPDF('P', PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);  
-    $pdf->SetCreator(PDF_CREATOR);  
-    $pdf->SetTitle('Chebut Tea FMS');  
-    $pdf->SetHeaderData('', '', PDF_HEADER_TITLE, PDF_HEADER_STRING);  
-    $pdf->setHeaderFont(Array(PDF_FONT_NAME_MAIN, '', PDF_FONT_SIZE_MAIN));  
-    $pdf->setFooterFont(Array(PDF_FONT_NAME_DATA, '', PDF_FONT_SIZE_DATA));  
-    $pdf->SetDefaultMonospacedFont('helvetica');  
-    $pdf->SetFooterMargin(PDF_MARGIN_FOOTER);  
-    $pdf->SetMargins(PDF_MARGIN_LEFT, '10', PDF_MARGIN_RIGHT);  
-    $pdf->setPrintHeader(false);  
-    $pdf->setPrintFooter(false);  
-    $pdf->SetAutoPageBreak(TRUE, 10);  
-    $pdf->SetFont('helvetica', '', 11);  
-    $pdf->AddPage();  
-    $content = '';  
-    $content .= '
-      	<h2 align="center">Chebut Tea FMS</h2>
-      	<h4 align="center">Farmers Tea Collection Centre</h4>
-      	<table border="1" cellspacing="0" cellpadding="3">  
-           <tr>  
-           		<th width="40%" align="center"><b>Farmer Name</b></th>
+    // Generate the HTML content
+    $html = '
+        <h2 align="center">Chebut Tea FMS</h2>
+        <h4 align="center">Farmers Tea Collection Centre</h4>
+        <table border="1" cellspacing="0" cellpadding="3">
+            <tr>
+                <th width="40%" align="center"><b>Farmer Name</b></th>
                 <th width="30%" align="center"><b>Farmer ID</b></th>
-				<th width="30%" align="center"><b>Collection Centre</b></th> 
-           </tr>  
-      ';  
-    $content .= generateRow($conn); 
-    $content .= '</table>';  
-    $pdf->writeHTML($content);  
-    $pdf->Output('chebut tea fms collection centres.pdf', 'I');
+                <th width="30%" align="center"><b>Collection Centre</b></th>
+            </tr>
+    ';
+    $html .= generateRow($conn);
+    $html .= '</table>';
+
+    // Load the HTML content into dompdf
+    $dompdf->loadHtml($html);
+
+    // Set paper size and orientation
+    $dompdf->setPaper('A4', 'portrait');
+
+    // Render the HTML as PDF
+    $dompdf->render();
+
+    // Output the generated PDF to the browser
+    $dompdf->stream('chebut_tea_fms_collection_centres.pdf', array('Attachment' => 0));
 
 ?>

@@ -11,6 +11,8 @@
  */
 html,
 body {
+  background-image: url("images/tea.png");
+  background-repeat: repeat;
   height: 100%;
 }
 .layout-boxed html,
@@ -18,6 +20,8 @@ body {
   height: 100%;
 }
 body {
+  background-image: url("images/tea.png");
+  background-repeat: repeat;
   font-family: 'Source Sans Pro', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-weight: 400;
   overflow-x: hidden;
@@ -61,6 +65,8 @@ body {
  */
 .content-wrapper,
 .main-footer {
+  background-image: url("images/tea.png");
+  background-repeat: repeat;
   -webkit-transition: -webkit-transform 0.3s ease-in-out, margin 0.3s ease-in-out;
   -moz-transition: -moz-transform 0.3s ease-in-out, margin 0.3s ease-in-out;
   -o-transition: -o-transform 0.3s ease-in-out, margin 0.3s ease-in-out;
@@ -146,6 +152,8 @@ body {
 }
 /* Content */
 .content {
+  background-image: url("images/tea.png");
+  background-repeat: repeat;
   min-height: 250px;
   padding: 15px;
   margin-right: auto;

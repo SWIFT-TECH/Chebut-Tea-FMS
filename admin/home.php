@@ -8,7 +8,7 @@
   }
 ?>
 <?php include 'includes/header.php'; ?>
-<body class="hold-transition skin-blue sidebar-mini">
+<body class="hold-transition skin-blue sidebar-mini" style="background-image: url(images/tea.png); background-repeat: repeat;">
 <div class="wrapper">
 
   	<?php include 'includes/navbar.php'; ?>

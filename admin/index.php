@@ -5,7 +5,15 @@
   }
 ?>
 <?php include 'includes/header.php'; ?>
-<body class="hold-transition login-page">
+<style>
+        body {
+            background-image: url("images/tea.png");
+            background-repeat: repeat;
+            background-color: blueviolet;
+        }
+    </style>
+	
+<body class="hold-transition login-page" style="background-image: url(images/tea.png); background-repeat: repeat; ">
 <div class="login-box">
   	<div class="login-logo">
   		<b>Admin Login</b>

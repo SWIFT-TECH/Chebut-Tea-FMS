@@ -12,11 +12,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Title -->
     <title>Chebut Tea FMS </title>
+    <div style="text-align: right;">
+    <a href="/chebut/admin">Admin Portal</a>
+    </div>
 
+
+    <style>
+        body {
+            background-image: url("images/tea.png");
+            background-repeat: repeat;
+            background-color: blueviolet;
+        }
+    </style>
 	
     <!-- Favicon -->
 
-<body class="hold-transition login-page">
+<body class="hold-transition login-page" style="background-image: url(images/tea.png); background-repeat: repeat; ">
 <div class="login-box">
 <div class="login-box-body">
     	<h4 class="login-box-msg">CLERK RECORDING MODULE</h4> </div>
@@ -29,22 +40,26 @@
     	<h4 class="login-box-msg">Enter Farmer ID</h4>
 
     	<form id="attendance">
-          
-      		<div class="form-group has-feedback">
-        		<input type="text" class="form-control input-lg" id="employee" name="employee" required>
-        		<span class="glyphicon glyphicon-calendar form-control-feedback"></span>
-          </div>
-          <h4 class="text">Enter KGS</h4>
+        <div class="text-center">
           <div class="form-group has-feedback">
-        		<input type="text" class="form-control input-lg" id="kgs" name="kgs" required>
-        		<span class="text"></span>
-      		</div>
-      		<div class="row">
-    			<div class="col-xs-4">
-          			<button type="submit" class="btn btn-primary btn-block btn-flat" name="submit"><i class="fa fa-sign-in"></i> Submit</button>
-        		</div>
-      		</div>
-    	</form>
+            <input type="text" class="form-control input-lg" id="employee" name="employee" required>
+            <span class="glyphicon glyphicon-calendar form-control-feedback"></span>
+        </div>
+        <h4 class="text">Enter KGS</h4>
+        <div class="form-group has-feedback">
+            <input type="text" class="form-control input-lg" id="kgs" name="kgs" required>
+            <span class="text"></span>
+        </div>
+        <div class="row">
+        <div class="row">
+            <div class="col-xs-4 text-center"> <!-- Updated with text-center class -->
+                <button type="submit" class="btn btn-primary btn-block btn-flat" name="submit" style="background-color: green;"><i class="fa fa-sign-in"></i> Submit</button>
+            </div>
+        </div>
+        </div>
+        </div>
+      </form>
+
   	</div>
 		<div class="alert alert-success alert-dismissible mt20 text-center" style="display:none;">
       <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
